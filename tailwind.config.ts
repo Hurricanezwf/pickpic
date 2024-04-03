@@ -9,8 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        // 自定义颜色
+      // height: 自定义高度扩展;
+      height: {
+        "100": "400px",
+        "120": "480px",
+        "140": "560px",
       },
     },
   },

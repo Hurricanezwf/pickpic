@@ -5,13 +5,13 @@ import styles from "./navbar.module.css";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [navbarOpacity, setNavbarOpacity] = useState<string>(100);
+  const [navbarOpacity, setNavbarOpacity] = useState<string>(0);
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     console.log("rolling, ", scrollTop);
     if (scrollTop == 0) {
-      setNavbarOpacity(100);
+      setNavbarOpacity(0);
     } else if (scrollTop < 26) {
       setNavbarOpacity(100);
     } else if (scrollTop >= 26 && scrollTop < 52) {
