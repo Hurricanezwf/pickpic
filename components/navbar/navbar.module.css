@@ -1,0 +1,29 @@
+.zwf-opacity-0 {
+    background-color: rgb(99, 102, 241, 0);
+}
+
+.zwf-opacity-5 {
+    background-color: rgb(99, 102, 241, 0.05);
+}
+
+
+.zwf-opacity-15 {
+    background-color: rgb(99, 102, 241, 0.15);
+}
+
+.zwf-opacity-30 {
+    background-color: rgb(99, 102, 241, 0.3);
+}
+
+
+.zwf-opacity-50 {
+    background-color: rgb(99, 102, 241, 0.5);
+}
+
+.zwf-opacity-75 {
+    background-color: rgb(99, 102, 241, 0.75);
+}
+
+.zwf-opacity-100 {
+    background-color: rgb(99, 102, 241, 1);
+}
