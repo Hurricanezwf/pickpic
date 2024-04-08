@@ -20,6 +20,7 @@ export default function Banner() {
         height={0}
         alt="Banner Image"
         quality="100"
+        priority
         className=""
       ></Image>
       <div className="absolute inset-0 flex justify-center items-center">

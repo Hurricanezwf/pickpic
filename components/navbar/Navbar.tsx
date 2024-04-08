@@ -1,11 +1,15 @@
 "use client";
 
 import styles from "./navbar.module.css";
-
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Logo from "@/components/navbar/Logo";
+import Tabs from "@/components/navbar/Tabs";
+import SearchBar from "@/components/navbar/SearchBar";
+import OptionBar from "@/components/navbar/OptionBar";
 
 export default function Navbar() {
-  const [navbarOpacity, setNavbarOpacity] = useState<string>(100);
+  const [navbarOpacity, setNavbarOpacity] = useState<string>(0);
 
   //const handleScroll = () => {
   //  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -39,7 +43,12 @@ export default function Navbar() {
 
   return (
     <div
-      className={`w-screen h-10 2xl:h-14 xl:h-12 lg:h-12 md:h-10 sm:h-10 fixed m-0 p-0 z-50 flex-none ${opastyle}`}
-    ></div>
+      className={`w-screen ${styles["navbar-height"]} fixed m-0 p-0 z-50 flex-none flex justify-center items-center ${opastyle}`}
+    >
+      <Logo height={styles["navbar-logo-height"]} />
+      <Tabs height={styles["navbar-tabs-height"]} />
+      <SearchBar />
+      <OptionBar />
+    </div>
   );
 }
