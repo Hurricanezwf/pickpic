@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Footer() {
+  const [opacityTransition, setOpacityTransition] =
+    useState<string>("opacity-0");
+
+  useEffect(() => {
+    setOpacityTransition("opacity-100");
+  }, []);
+
   return (
-    <div className="h-10 flex-none flex justify-center items-center gap-2">
+    <div
+      className={`h-10 flex-none flex justify-center items-center gap-2 transition-opacity duration-[1000ms] ease-in delay-[1500ms] ${opacityTransition}`}
+    >
       <div className="">
         <Link
           className="text-slate-400 text-xs"

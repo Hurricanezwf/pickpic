@@ -15,7 +15,7 @@ export default function Banner() {
 
   return (
     <div
-      className={`relative transition-opacity duration-[1500ms] ease-in-out ${opacity}`}
+      className={`relative transition-opacity duration-[1000ms] ease-in ${opacity}`}
       data-target="banner"
     >
       <Image
