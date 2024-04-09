@@ -8,7 +8,12 @@ export default function ArrowTop() {
         alert("you click the button to scroll to the top");
       }}
     >
-      <Image src="/arrow-top.svg" width={32} height={32}></Image>
+      <Image
+        src="/arrow-top.svg"
+        width={32}
+        height={32}
+        alt="go to top"
+      ></Image>
     </button>
   );
 }

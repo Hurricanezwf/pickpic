@@ -5,9 +5,9 @@ export default function OptionBar() {
   return (
     <div className={`flex-none flex justify-center items-center`}>
       <button
-        className="w-[80px] h-[36px] flex flex-col justify-center items-center -space-y-1 text-white/75 hover:bg-white/20 hover:rounded-md"
-        onClick={() => {
-          alert("you click language selector");
+        className="w-[80px] h-[36px] flex flex-col justify-center items-center -space-y-1 text-white/75"
+        onMouseOver={() => {
+          alert("your mouse is over language selector");
         }}
       >
         <div>中文简体</div>
