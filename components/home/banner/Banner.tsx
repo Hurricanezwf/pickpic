@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Banner() {
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [opacity, setOpacity] = useState<string>("opacity-0");
 
   useEffect(() => {
     // 初始化时获取一次页面宽度
@@ -13,15 +14,20 @@ export default function Banner() {
   }, []);
 
   return (
-    <div className="relative" data-target="banner">
+    <div
+      className={`relative transition-opacity duration-[1500ms] ease-in-out ${opacity}`}
+      data-target="banner"
+    >
       <Image
         src="/banner.jpeg"
         width={windowWidth}
         height={0}
         alt="Banner Image"
-        quality="100"
-        priority
-        className=""
+        quality="80"
+        priority={true}
+        onLoad={() => {
+          setOpacity("opacity-100");
+        }}
       ></Image>
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="flex flex-col gap-6 items-center">

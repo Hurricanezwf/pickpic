@@ -25,6 +25,8 @@ export default function Masonry() {
   ];
 
   const [images, setImages] = useState([]);
+  const [opacityTransition, setOpacityTransition] =
+    useState<string>("opacity-0");
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadAdmitted, setIsLoadAdmitted] = useState(false);
   const [loadedImageCount, setLoadedImageCount] = useState(0);
@@ -84,11 +86,14 @@ export default function Masonry() {
 
     setImages(newImages);
     setIsLoading(false);
+    setOpacityTransition("opacity-100");
     setLoadedImageCount(idx);
   };
 
   return (
-    <div className="">
+    <div
+      className={`transition-opacity duration-[600ms] ease-in delay-[1000ms] ${opacityTransition}`}
+    >
       <div className="mt-4 mx-8">
         <div className="grid grid-cols-6 gap-x-1">
           <div className="space-y-1">

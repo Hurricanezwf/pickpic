@@ -12,7 +12,13 @@ import OptionBar from "@/components/navbar/OptionBar";
 
 export default function Navbar() {
   const [navbarOpacity, setNavbarOpacity] = useState<string>("on");
+  const [navbarDisplayTransition, setNavbarDisplayTransition] =
+    useState<string>("opacity-0");
   const { y } = useWindowScroll();
+
+  useEffect(() => {
+    setNavbarDisplayTransition("opacity-100");
+  }, []);
 
   useEffect(() => {
     if (y && y > 0) {
@@ -28,12 +34,12 @@ export default function Navbar() {
 
   return (
     <div
-      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex justify-center items-center ${opastyle}`}
+      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex justify-center items-center transition-opacity duration-[1500ms] ease-in-out delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
     >
       <Logo navbarOpacity={navbarOpacity} />
       <Tabs navbarOpacity={navbarOpacity} />
-      <SearchBar />
-      <OptionBar />
+      <SearchBar navbarOpacity={navbarOpacity} />
+      <OptionBar navbarOpacity={navbarOpacity} />
     </div>
   );
 }
