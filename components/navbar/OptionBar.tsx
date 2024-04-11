@@ -1,12 +1,19 @@
-import styles from "./navbar.module.css";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import styles from "./navbar.module.css";
 
 interface OptionBarProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // locale 语言;
+  locale: string;
 }
 
-export default function OptionBar({ navbarOpacity }: OptionBarProps) {
+interface OptionBarParams {
+  locale: string;
+}
+
+export default function OptionBar({ navbarOpacity, locale }: OptionBarProps) {
   let languageStyles = `text-white/75`;
   let arrowDownImage = "/arrow-down-white.svg";
   let buttonStyles = `text-white/80 hover:text-white/100`;
@@ -16,6 +23,10 @@ export default function OptionBar({ navbarOpacity }: OptionBarProps) {
     buttonStyles = `text-black/80 hover:text-black/100`;
   }
 
+  const i18nNavbar = useTranslations("HomeNavbar");
+  const i18nLocales = useTranslations("Locales");
+  const currentLangugange = i18nLocales(locale);
+
   return (
     <div className={`flex-none flex justify-center items-center`}>
       <button
@@ -24,7 +35,7 @@ export default function OptionBar({ navbarOpacity }: OptionBarProps) {
           alert("your mouse is over language selector");
         }}
       >
-        <div>中文简体</div>
+        <div>{currentLangugange}</div>
         <img className="w-[16px] h-[16px]" src={arrowDownImage}></img>
       </button>
       <button
@@ -33,7 +44,7 @@ export default function OptionBar({ navbarOpacity }: OptionBarProps) {
           alert("you click login");
         }}
       >
-        登录
+        {i18nNavbar("loginButton")}
       </button>
     </div>
   );

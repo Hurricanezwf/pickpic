@@ -10,7 +10,11 @@ import Tabs from "@/components/navbar/Tabs";
 import SearchBar from "@/components/navbar/SearchBar";
 import OptionBar from "@/components/navbar/OptionBar";
 
-export default function Navbar() {
+interface NavbarProps {
+  locale: string;
+}
+
+export default function Navbar({ locale }: NavbarProps) {
   const [navbarOpacity, setNavbarOpacity] = useState<string>("on");
   const [navbarDisplayTransition, setNavbarDisplayTransition] =
     useState<string>("opacity-0");
@@ -39,7 +43,7 @@ export default function Navbar() {
       <Logo navbarOpacity={navbarOpacity} />
       <Tabs navbarOpacity={navbarOpacity} />
       <SearchBar navbarOpacity={navbarOpacity} />
-      <OptionBar navbarOpacity={navbarOpacity} />
+      <OptionBar navbarOpacity={navbarOpacity} locale={locale} />
     </div>
   );
 }

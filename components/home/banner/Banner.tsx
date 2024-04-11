@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export default function Banner() {
@@ -12,6 +13,8 @@ export default function Banner() {
     setWindowWidth(window.innerWidth);
     // TODO: 捕获窗口 resize 事件，重新设置 windowWidth
   }, []);
+
+  const i18n = useTranslations("HomeBanner");
 
   return (
     <div
@@ -32,10 +35,10 @@ export default function Banner() {
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="flex flex-col gap-6 items-center">
           <p className="text-6xl text-white/80 font-light tracking-normal">
-            收集灵感，创造无限可能
+            {i18n("slogan")}
           </p>
           <p className="text-white/80 font-light tracking-light">
-            拥有超过10亿的AI生成内容可供探索，通过内容学习咒语，也是探索灵感的好地方
+            {i18n("sloganDesc")}
           </p>
         </div>
       </div>

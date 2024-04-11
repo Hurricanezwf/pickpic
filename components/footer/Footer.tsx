@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
   const [opacityTransition, setOpacityTransition] =
@@ -9,27 +10,13 @@ export default function Footer() {
     setOpacityTransition("opacity-100");
   }, []);
 
+  const i18n = useTranslations("Footer");
+
   return (
     <div
-      className={`h-10 flex-none flex justify-center items-center gap-2 transition-opacity duration-[1000ms] ease-in delay-[1500ms] ${opacityTransition}`}
+      className={`h-10 flex-none flex justify-center items-center transition-opacity duration-[1000ms] ease-in delay-[1500ms] ${opacityTransition}`}
     >
-      <div className="">
-        <Link
-          className="text-slate-400 text-xs"
-          href="https://beian.miit.gov.cn/#/Integrated/index"
-        >
-          沪ICP备202103xxx0号-2
-        </Link>
-      </div>
-      <div className="flex justify-center items-center">
-        <img src="/beian.png"></img>
-        <Link
-          className="text-slate-400 text-xs"
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502020083"
-        >
-          沪公网安备 31011502xxxxx3号
-        </Link>
-      </div>
+      <div className="text-slate-400 text-xs">{i18n("text")}</div>
     </div>
   );
 }

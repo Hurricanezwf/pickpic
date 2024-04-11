@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import styles from "./navbar.module.css";
 
 interface TabsProps {
@@ -10,21 +11,22 @@ interface TabsProps {
 
 export default function Tabs({ navbarOpacity }: TabsProps) {
   const height = styles["navbar-tabs-height"];
+  const i18n = useTranslations("HomeNavbar");
 
   const tabs = [
     {
       path: "/",
-      title: "探索",
+      title: i18n("exploreLink"),
       styles: "",
     },
     {
       path: "/create",
-      title: "创作",
+      title: i18n("createLink"),
       styles: "",
     },
     {
       path: "/like",
-      title: "喜欢",
+      title: i18n("likeLink"),
       styles: "",
     },
   ];
@@ -56,7 +58,7 @@ export default function Tabs({ navbarOpacity }: TabsProps) {
 
   return (
     <div
-      className={`flex flex-none w-36 ${height} items-center justify-between mx-0`}
+      className={`flex flex-none w-[192px] ${height} items-center justify-between mx-0`}
       data-target="navbar-tabs"
     >
       {tabs.map((item) => (

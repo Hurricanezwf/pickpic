@@ -7,7 +7,11 @@ import Masonry from "@/components/home/masonry/Masonry";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 
-export default function Home() {
+interface HomeProps {
+  params: { locale: string };
+}
+
+export default function Home({ params }: HomeProps) {
   const [loadNavbar, setLoadNavbar] = useState<boolean>(false);
   const [loadBanner, setLoadBanner] = useState<boolean>(false);
   const [loadMansonry, setLoadMansonry] = useState<boolean>(false);
@@ -37,7 +41,7 @@ export default function Home() {
 
   let navbar;
   if (loadNavbar) {
-    navbar = <Navbar />;
+    navbar = <Navbar locale={params.locale} />;
   }
 
   let mansonry;

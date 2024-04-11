@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { useTranslations } from "next-intl";
 import styles from "./navbar.module.css";
 
 interface SearchBarProps {
@@ -32,6 +33,8 @@ export default function SearchBar({ navbarOpacity }: SearchBarProps) {
     inputDynamicStyles = "text-black caret-black";
   }
 
+  const i18n = useTranslations("HomeNavbar");
+
   return (
     <div
       className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles}`}
@@ -47,7 +50,7 @@ export default function SearchBar({ navbarOpacity }: SearchBarProps) {
         id="navbar-search-input"
         className={`bg-transparent w-full h-[${height}]  text-md  outline-none grow ml-2 mr-6 ${inputDynamicStyles}`}
         autoFocus
-        placeholder="输入关键词, 按 Enter 搜索图片"
+        placeholder={i18n("searchBarPlaceholder")}
         onKeyDown={onSearch}
       ></input>
     </div>
