@@ -38,7 +38,7 @@ export default function Navbar({ locale }: NavbarProps) {
 
   return (
     <div
-      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex justify-center items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
+      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex  items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
     >
       <Logo navbarOpacity={navbarOpacity} />
       <Tabs navbarOpacity={navbarOpacity} />
