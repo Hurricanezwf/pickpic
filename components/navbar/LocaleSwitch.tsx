@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import styles from "./navbar.module.css";
+import i18nJSON from "@/libs/messages/zh-CN.json";
 import LocaleSelector from "@/components/utils/LocaleSelector";
 import { Theme } from "@/components/utils/LocaleSelector";
 
@@ -29,17 +30,6 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
   const i18nLocales = useTranslations("Locales");
   const currentLangugange = i18nLocales(locale);
 
-  const locales = [
-    {
-      code: "en-US",
-      displayName: "英语",
-    },
-    {
-      code: "zh-CN",
-      displayName: "中文简体",
-    },
-  ];
-
   const onLocaleChange = (newLocale: string) => {
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=315360000; SameSite=Lax`;
     router.refresh();
@@ -48,13 +38,31 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
   return (
     <div className={`mr-0 flex-none`}>
       <LocaleSelector
-        locales={locales}
+        locales={newLocales()}
         currentLocaleCode={locale}
         theme={Theme.Dark}
         onLocaleChange={onLocaleChange}
       />
     </div>
   );
+}
+
+interface Locale {
+  code: string;
+  displayName: string;
+}
+
+function newLocales(): Array<Locale> {
+  const locales: Array<Locale> = [];
+  const localeConfigs = i18nJSON.Locales;
+  const localeCodes = Object.keys(localeConfigs);
+  localeCodes.forEach((code) => {
+    locales.push({
+      code: code,
+      displayName: localeConfigs[code],
+    });
+  });
+  return locales;
 }
 
 /*
