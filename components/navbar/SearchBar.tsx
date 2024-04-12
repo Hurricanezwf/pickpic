@@ -1,13 +1,24 @@
 import Image from "next/image";
 import React from "react";
+import { useTranslations } from "next-intl";
 import styles from "./navbar.module.css";
 
 interface SearchBarProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // className
+  // +optional;
+  className: string;
 }
 
-export default function SearchBar({ navbarOpacity }: SearchBarProps) {
+export default function SearchBar(props: SearchBarProps) {
+  let className = props.className;
+  if (!className) {
+    className = "";
+  }
+
+  const navbarOpacity = props.navbarOpacity;
+
   const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") {
       return;
@@ -27,14 +38,16 @@ export default function SearchBar({ navbarOpacity }: SearchBarProps) {
   let searchBarIcon = "/search-white.svg";
   let inputDynamicStyles = "text-white caret-white";
   if (navbarOpacity && navbarOpacity === "off") {
-    searchBarDynamicStyles = `bg-black/10 border-black/70 hover:border-black/100`;
-    searchBarIcon = "/search-black.svg";
-    inputDynamicStyles = "text-black caret-black";
+    searchBarDynamicStyles = `bg-white/10 border-white/70 hover:border-white/100`;
+    searchBarIcon = "/search-white.svg";
+    inputDynamicStyles = "text-white caret-white";
   }
+
+  const i18n = useTranslations("HomeNavbar");
 
   return (
     <div
-      className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles}`}
+      className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles} ${className}`}
       data-target="navbar-searchbar"
     >
       <Image
@@ -47,7 +60,7 @@ export default function SearchBar({ navbarOpacity }: SearchBarProps) {
         id="navbar-search-input"
         className={`bg-transparent w-full h-[${height}]  text-md  outline-none grow ml-2 mr-6 ${inputDynamicStyles}`}
         autoFocus
-        placeholder="输入关键词, 按 Enter 搜索图片"
+        placeholder={i18n("searchBarPlaceholder")}
         onKeyDown={onSearch}
       ></input>
     </div>

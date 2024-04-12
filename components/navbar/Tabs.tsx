@@ -1,30 +1,41 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import styles from "./navbar.module.css";
 
 interface TabsProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // className
+  // +optional;
+  className: string;
 }
 
-export default function Tabs({ navbarOpacity }: TabsProps) {
+export default function Tabs(props: TabsProps) {
+  let className = props.className;
+  if (!className) {
+    className = "";
+  }
+
+  const navbarOpacity = props.navbarOpacity;
   const height = styles["navbar-tabs-height"];
+  const i18n = useTranslations("HomeNavbar");
 
   const tabs = [
     {
       path: "/",
-      title: "探索",
+      title: i18n("exploreLink"),
       styles: "",
     },
     {
       path: "/create",
-      title: "创作",
+      title: i18n("createLink"),
       styles: "",
     },
     {
       path: "/like",
-      title: "喜欢",
+      title: i18n("likeLink"),
       styles: "",
     },
   ];
@@ -36,7 +47,7 @@ export default function Tabs({ navbarOpacity }: TabsProps) {
       // focused;
       if (navbarOpacity && navbarOpacity === "off") {
         // focused & opacity off;
-        item.styles = `focus:text-black/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-black/100 underline underline-offset-[9px] decoration-[3px]`;
+        item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/100 underline underline-offset-[9px] decoration-[3px]`;
       } else {
         // focused & opacity on;
         item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/100 underline underline-offset-[9px] decoration-[3px]`;
@@ -46,7 +57,7 @@ export default function Tabs({ navbarOpacity }: TabsProps) {
     // unfocused;
     if (navbarOpacity && navbarOpacity === "off") {
       // unfocused & opacity off;
-      item.styles = `focus:text-black/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-black/70`;
+      item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/70`;
     } else {
       // unfocused & opacity on;
       item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/70`;
@@ -56,7 +67,7 @@ export default function Tabs({ navbarOpacity }: TabsProps) {
 
   return (
     <div
-      className={`flex flex-none w-36 ${height} items-center justify-between mx-0`}
+      className={`flex flex-none w-[192px] ${height} items-center justify-between mx-0 ${className}`}
       data-target="navbar-tabs"
     >
       {tabs.map((item) => (

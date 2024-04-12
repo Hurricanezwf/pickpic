@@ -1,0 +1,20 @@
+{
+    "HomeNavbar": {
+        "exploreLink": "探索",
+        "createLink": "创作",
+        "likeLink": "喜欢",
+        "searchBarPlaceholder": "输入关键词, 按 Enter 搜索图片",
+        "loginButton": "登录"
+    },
+    "HomeBanner": {
+        "slogan": "收集灵感, 创造无限可能",
+        "sloganDesc": "拥有超过10亿的AI生成内容可供探索, 通过内容学习咒语, 也是探索灵感的好地方"
+    },
+    "Locales": {
+        "zh-CN": "中文简体",
+        "en-US": "English"
+    },
+    "Footer": {
+        "text": "© 2024 Hurricanezwf, 仅供交流学习使用"
+    }
+}

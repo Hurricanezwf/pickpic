@@ -1,0 +1,20 @@
+{
+    "HomeNavbar": {
+        "exploreLink": "explore",
+        "createLink": "create",
+        "likeLink": "like",
+        "searchBarPlaceholder": "Input some keywords and press Enter to search images",
+        "loginButton": "Login"
+    },
+    "HomeBanner": {
+        "slogan": "Possibilities from Every Pick",
+        "sloganDesc": "With over a billion high-quality AI-generated images to explore, also a great place to learn prompts and get inspired"
+    },
+    "Locales": {
+        "zh-CN": "中文简体",
+        "en-US": "English"
+    },
+    "Footer": {
+        "text": "© 2024 Hurricanezwf, for study pursose only"
+    }
+}
