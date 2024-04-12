@@ -6,9 +6,19 @@ import styles from "./navbar.module.css";
 interface SearchBarProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // className
+  // +optional;
+  className: string;
 }
 
-export default function SearchBar({ navbarOpacity }: SearchBarProps) {
+export default function SearchBar(props: SearchBarProps) {
+  let className = props.className;
+  if (!className) {
+    className = "";
+  }
+
+  const navbarOpacity = props.navbarOpacity;
+
   const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") {
       return;
@@ -37,7 +47,7 @@ export default function SearchBar({ navbarOpacity }: SearchBarProps) {
 
   return (
     <div
-      className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles}`}
+      className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles} ${className}`}
       data-target="navbar-searchbar"
     >
       <Image

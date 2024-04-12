@@ -8,7 +8,7 @@ import { useWindowScroll } from "react-use";
 import Logo from "@/components/navbar/Logo";
 import Tabs from "@/components/navbar/Tabs";
 import SearchBar from "@/components/navbar/SearchBar";
-import OptionBar from "@/components/navbar/OptionBar";
+import LocaleSwitch from "@/components/navbar/LocaleSwitch";
 
 interface NavbarProps {
   locale: string;
@@ -38,12 +38,12 @@ export default function Navbar({ locale }: NavbarProps) {
 
   return (
     <div
-      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex  items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
+      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
     >
-      <Logo navbarOpacity={navbarOpacity} />
-      <Tabs navbarOpacity={navbarOpacity} />
-      <SearchBar navbarOpacity={navbarOpacity} />
-      <OptionBar navbarOpacity={navbarOpacity} locale={locale} />
+      <Logo className="self-center" navbarOpacity={navbarOpacity} />
+      <Tabs className="self-center" navbarOpacity={navbarOpacity} />
+      <SearchBar className="self-center" navbarOpacity={navbarOpacity} />
+      <LocaleSwitch navbarOpacity={navbarOpacity} locale={locale} />
     </div>
   );
 }

@@ -7,9 +7,18 @@ import styles from "./navbar.module.css";
 interface TabsProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // className
+  // +optional;
+  className: string;
 }
 
-export default function Tabs({ navbarOpacity }: TabsProps) {
+export default function Tabs(props: TabsProps) {
+  let className = props.className;
+  if (!className) {
+    className = "";
+  }
+
+  const navbarOpacity = props.navbarOpacity;
   const height = styles["navbar-tabs-height"];
   const i18n = useTranslations("HomeNavbar");
 
@@ -58,7 +67,7 @@ export default function Tabs({ navbarOpacity }: TabsProps) {
 
   return (
     <div
-      className={`flex flex-none w-[192px] ${height} items-center justify-between mx-0`}
+      className={`flex flex-none w-[192px] ${height} items-center justify-between mx-0 ${className}`}
       data-target="navbar-tabs"
     >
       {tabs.map((item) => (

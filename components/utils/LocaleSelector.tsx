@@ -1,8 +1,8 @@
 interface LocaleSelectorProps {
   // locales 语言包显示选项;
   locales: Array<Locale>;
-  // className
-  className: string;
+  // mode: dark or light;
+  mode: string;
 }
 
 interface Locale {
@@ -12,6 +12,7 @@ interface Locale {
   displayName: string;
 }
 
+// TODO: fix my color;
 export default function LocaleSelector(props: LocaleSelectorProps) {
   const locales: Array<Locale> = props.locales;
   if (!locales) {
@@ -43,15 +44,14 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
   ));
 
   return (
-    <div
-      className={`flex flex-col items-center ${width} space-y-0.5 ${className} text-white`}
-    >
-      <button className="w-[80px] h-[36px] flex flex-col justify-items-center items-center -space-y-1">
+    <div className={`inline-block relative  ${width} space-y-0.5 ${className}`}>
+      <button className="w-[80px] h-[36px] mx-auto flex flex-col items-center -space-y-1">
         <p>中文简体</p>
         <img className="w-[16px] h-[16px]" src="/arrow-down-white.svg"></img>
       </button>
+
       <div
-        className={`${width} ${outerBorder} ${outerBorderColor} ${outerBorderRound} grid grid-cols-1 divide-y`}
+        className={`${width} ${outerBorder} ${outerBorderColor} ${outerBorderRound} grid grid-cols-1 divide-y absolute top-11 bg-white/80`}
       >
         {items}
       </div>

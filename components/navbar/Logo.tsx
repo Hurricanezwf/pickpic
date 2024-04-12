@@ -4,9 +4,18 @@ import Image from "next/image";
 interface LogoProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
   navbarOpacity: string;
+  // className
+  // +optional;
+  className: string;
 }
 
-export default function Logo({ navbarOpacity }: LogoProps) {
+export default function Logo(props: LogoProps) {
+  let className = props.className;
+  if (!className) {
+    className = "";
+  }
+
+  const navbarOpacity = props.navbarOpacity;
   const height = styles["navbar-logo-height"];
   let logoImage = "/logo-white.svg";
   if (navbarOpacity && navbarOpacity === "off") {
@@ -14,7 +23,10 @@ export default function Logo({ navbarOpacity }: LogoProps) {
   }
 
   return (
-    <div className={`flex-none w-32 ${height}`} data-target="navbar-logo">
+    <div
+      className={`flex-none w-32 ${height} ${className}`}
+      data-target="navbar-logo"
+    >
       <div className={`w-24 box-content mx-4  ${height}`}>
         <img src={logoImage} className={`${height}`}></img>
       </div>
