@@ -36,7 +36,7 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
   ];
 
   return (
-    <div className={`mr-8 self-center`}>
+    <div className={`mr-8`}>
       <LocaleSelector className="" locales={locales}></LocaleSelector>
     </div>
   );

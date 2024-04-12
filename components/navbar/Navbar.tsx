@@ -38,11 +38,11 @@ export default function Navbar({ locale }: NavbarProps) {
 
   return (
     <div
-      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
+      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
     >
-      <Logo className="self-center" navbarOpacity={navbarOpacity} />
-      <Tabs className="self-center" navbarOpacity={navbarOpacity} />
-      <SearchBar className="self-center" navbarOpacity={navbarOpacity} />
+      <Logo navbarOpacity={navbarOpacity} />
+      <Tabs navbarOpacity={navbarOpacity} />
+      <SearchBar navbarOpacity={navbarOpacity} />
       <LocaleSwitch navbarOpacity={navbarOpacity} locale={locale} />
     </div>
   );
