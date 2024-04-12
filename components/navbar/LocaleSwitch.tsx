@@ -31,13 +31,21 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
     },
     {
       code: "zh-CN",
-      displayName: "中文简体就开始大家快结束",
+      displayName: "中文简体",
     },
   ];
 
+  const onLocaleChange = (newLocale: string) => {
+    // TODO: redirect to new locale page when local was changed.
+  };
+
   return (
-    <div className={`mr-8`}>
-      <LocaleSelector className="" locales={locales}></LocaleSelector>
+    <div className={`mr-0 flex-none`}>
+      <LocaleSelector
+        locales={locales}
+        currentLocaleCode={locale}
+        onLocaleChange={onLocaleChange}
+      />
     </div>
   );
 }
