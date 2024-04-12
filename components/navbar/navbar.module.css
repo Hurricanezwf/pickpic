@@ -1,11 +1,3 @@
-.navbar-opacity-on {
-  background-color: rgb(255, 255, 255, 0);
-}
-
-.navbar-opacity-off {
-  background-color: rgb(255, 255, 255, 0.8);
-}
-
 .navbar-height {
   height: 56px;
 }

@@ -38,9 +38,9 @@ export default function SearchBar(props: SearchBarProps) {
   let searchBarIcon = "/search-white.svg";
   let inputDynamicStyles = "text-white caret-white";
   if (navbarOpacity && navbarOpacity === "off") {
-    searchBarDynamicStyles = `bg-black/10 border-black/70 hover:border-black/100`;
-    searchBarIcon = "/search-black.svg";
-    inputDynamicStyles = "text-black caret-black";
+    searchBarDynamicStyles = `bg-white/10 border-white/70 hover:border-white/100`;
+    searchBarIcon = "/search-white.svg";
+    inputDynamicStyles = "text-white caret-white";
   }
 
   const i18n = useTranslations("HomeNavbar");

@@ -18,9 +18,9 @@ export default function Logo(props: LogoProps) {
   const navbarOpacity = props.navbarOpacity;
   const height = styles["navbar-logo-height"];
   let logoImage = "/logo-white.svg";
-  if (navbarOpacity && navbarOpacity === "off") {
-    logoImage = "/logo-black.svg";
-  }
+  //if (navbarOpacity && navbarOpacity === "off") {
+  //  logoImage = "/logo-black.svg";
+  //}
 
   return (
     <div

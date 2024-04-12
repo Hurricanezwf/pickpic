@@ -1,7 +1,10 @@
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import styles from "./navbar.module.css";
 import LocaleSelector from "@/components/utils/LocaleSelector";
+import { Theme } from "@/components/utils/LocaleSelector";
 
 interface LocaleSwitch {
   // navbarOpacity 导航栏透明状态, "on" or "off"
@@ -11,13 +14,15 @@ interface LocaleSwitch {
 }
 
 export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
+  const router = useRouter();
+
   let languageStyles = `text-white/75`;
   let arrowDownImage = "/arrow-down-white.svg";
   let buttonStyles = `text-white/80 hover:text-white/100`;
   if (navbarOpacity && navbarOpacity === "off") {
-    languageStyles = `text-black/75`;
-    arrowDownImage = "/arrow-down-black.svg";
-    buttonStyles = `text-black/80 hover:text-black/100`;
+    languageStyles = `text-white/75`;
+    arrowDownImage = "/arrow-down-white.svg";
+    buttonStyles = `text-white/80 hover:text-white/100`;
   }
 
   const i18nNavbar = useTranslations("HomeNavbar");
@@ -36,7 +41,8 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
   ];
 
   const onLocaleChange = (newLocale: string) => {
-    // TODO: redirect to new locale page when local was changed.
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=315360000; SameSite=Lax`;
+    router.refresh();
   };
 
   return (
@@ -44,6 +50,7 @@ export default function LocaleSwitch({ navbarOpacity, locale }: LocaleSwitch) {
       <LocaleSelector
         locales={locales}
         currentLocaleCode={locale}
+        theme={Theme.Dark}
         onLocaleChange={onLocaleChange}
       />
     </div>

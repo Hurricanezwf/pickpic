@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export enum Theme {
   Dark,
@@ -42,7 +42,7 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
   );
 
   let theme: Theme = props.theme;
-  if (!theme) {
+  if (theme === undefined) {
     theme = Theme.Light;
   }
 
@@ -52,7 +52,22 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
   const [currentLocaleName, setCurrentLocaleName] = useState<string>(
     currentLocaleDisplayName
   );
+  const localeSelectorRef = useRef(null);
   const closeDropDownBeforeTimeoutRef = useRef(null);
+
+  // 监听全局 click 事件，实现空白点击关闭 drop list;
+  useEffect(() => {
+    const handleClick = (e) => {
+      const isClickInside = localeSelectorRef.current.contains(e.target);
+      if (!isClickInside) {
+        setDropDownListHidden("hidden");
+      }
+    };
+    window.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
+  });
 
   const onSwitchLocale = (e) => {
     // close dropdown;
@@ -83,6 +98,7 @@ export default function LocaleSelector(props: LocaleSelectorProps) {
   return (
     <div
       className={`inline-block relative space-y-0.5 ${s.componentWidth} `}
+      ref={localeSelectorRef}
       onClick={() => {
         setDropDownListHidden(dropDownListHidden === "hidden" ? "" : "hidden");
       }}
@@ -149,7 +165,7 @@ function settingsFrom(theme: Theme): Settings {
     dropDownListBackgroundColor: "",
     dropDownListBorderWidth: "border",
     dropDownListBorderColor: "",
-    dropDownListBorderRound: "rounded-md",
+    dropDownListBorderRound: "rounded",
     dropDownListDivideColor: "",
     dropDownListItemWidth: "w-32",
     dropDownListItemHeight: "h-8",
@@ -160,10 +176,16 @@ function settingsFrom(theme: Theme): Settings {
 
   switch (theme) {
     case Theme.Dark:
+      s.currentLocaleTextColor = "text-white/70";
+      s.dropDownListBackgroundColor = "bg-black/80";
+      s.dropDownListBorderColor = "border-white/70";
+      s.dropDownListDivideColor = "divide-white/70";
+      s.dropDownListItemTextColor = "text-white/70";
+      s.dropDownListItemTextColorHover = "hover:text-white/100";
       return s;
     case Theme.Light:
       s.currentLocaleTextColor = "text-white/70";
-      s.dropDownListBackgroundColor = "bg-white/0";
+      s.dropDownListBackgroundColor = "bg-white/80";
       s.dropDownListBorderColor = "border-white/80";
       s.dropDownListDivideColor = "divide-white/80";
       s.dropDownListItemTextColor = "text-white/70";

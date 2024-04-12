@@ -32,13 +32,15 @@ export default function Navbar({ locale }: NavbarProps) {
     }
   }, [y]);
 
-  const opa = `navbar-opacity-${navbarOpacity}`;
-  const opastyle = styles[opa];
+  let opastyle = "bg-black/80";
+  if (navbarOpacity === "on") {
+    opastyle = "bg-black/0";
+  }
   const navbarHeight = styles["navbar-height"];
 
   return (
     <div
-      className={`w-screen ${navbarHeight} fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${opastyle} ${navbarDisplayTransition}`}
+      className={`w-screen fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${navbarHeight} ${opastyle} ${navbarDisplayTransition}`}
     >
       <Logo navbarOpacity={navbarOpacity} />
       <Tabs navbarOpacity={navbarOpacity} />

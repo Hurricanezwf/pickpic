@@ -47,7 +47,7 @@ export default function Tabs(props: TabsProps) {
       // focused;
       if (navbarOpacity && navbarOpacity === "off") {
         // focused & opacity off;
-        item.styles = `focus:text-black/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-black/100 underline underline-offset-[9px] decoration-[3px]`;
+        item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/100 underline underline-offset-[9px] decoration-[3px]`;
       } else {
         // focused & opacity on;
         item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/100 underline underline-offset-[9px] decoration-[3px]`;
@@ -57,7 +57,7 @@ export default function Tabs(props: TabsProps) {
     // unfocused;
     if (navbarOpacity && navbarOpacity === "off") {
       // unfocused & opacity off;
-      item.styles = `focus:text-black/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-black/70`;
+      item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/70`;
     } else {
       // unfocused & opacity on;
       item.styles = `focus:text-white/100 focus:underline focus:underline-offset-[9px] focus:decoration-[3px] ${linkStyles} text-white/70`;
