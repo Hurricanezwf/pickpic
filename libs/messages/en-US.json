@@ -3,8 +3,8 @@
         "exploreLink": "explore",
         "createLink": "create",
         "likeLink": "like",
-        "searchBarPlaceholder": "Input some keywords and press Enter to search images",
-        "loginButton": "Login"
+        "searchBarPlaceholder": "Press Enter to search images",
+        "loginButton": "Log In"
     },
     "HomeBanner": {
         "slogan": "Possibilities from Every Pick",

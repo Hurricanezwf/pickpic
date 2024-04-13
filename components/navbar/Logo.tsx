@@ -23,11 +23,8 @@ export default function Logo(props: LogoProps) {
   //}
 
   return (
-    <div
-      className={`flex-none w-32 ${height} ${className}`}
-      data-target="navbar-logo"
-    >
-      <div className={`w-24 box-content mx-4  ${height}`}>
+    <div className={`w-32 ${height} ${className}`} data-target="navbar-logo">
+      <div className={`w-24 box-content ${height}`}>
         <img src={logoImage} className={`${height}`}></img>
       </div>
     </div>

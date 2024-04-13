@@ -9,6 +9,7 @@ import Logo from "@/components/navbar/Logo";
 import Tabs from "@/components/navbar/Tabs";
 import SearchBar from "@/components/navbar/SearchBar";
 import LocaleSwitch from "@/components/navbar/LocaleSwitch";
+import LoginButton from "@/components/navbar/LoginButton";
 
 interface NavbarProps {
   locale: string;
@@ -42,10 +43,25 @@ export default function Navbar({ locale }: NavbarProps) {
     <div
       className={`w-screen fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${navbarHeight} ${opastyle} ${navbarDisplayTransition}`}
     >
-      <Logo navbarOpacity={navbarOpacity} />
-      <Tabs navbarOpacity={navbarOpacity} />
-      <SearchBar navbarOpacity={navbarOpacity} />
-      <LocaleSwitch navbarOpacity={navbarOpacity} locale={locale} />
+      <div className="flex-none ml-4">
+        <Logo navbarOpacity={navbarOpacity} />
+      </div>
+
+      <div className="flex-none">
+        <Tabs navbarOpacity={navbarOpacity} />
+      </div>
+
+      <div className="grow shrink ml-6">
+        <SearchBar navbarOpacity={navbarOpacity} />
+      </div>
+
+      <div className="flex-none">
+        <LocaleSwitch navbarOpacity={navbarOpacity} locale={locale} />
+      </div>
+
+      <div className="flex-none mr-8">
+        <LoginButton />
+      </div>
     </div>
   );
 }

@@ -67,7 +67,7 @@ export default function Tabs(props: TabsProps) {
 
   return (
     <div
-      className={`flex flex-none w-[192px] ${height} items-center justify-between mx-0 ${className}`}
+      className={`flex w-[192px] ${height} items-center justify-between ${className}`}
       data-target="navbar-tabs"
     >
       {tabs.map((item) => (

@@ -47,7 +47,7 @@ export default function SearchBar(props: SearchBarProps) {
 
   return (
     <div
-      className={`grow shrink h-[${height}] mx-16   border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles} ${className}`}
+      className={`w-full h-[${height}] border-[2px] rounded-md flex transition-colors duration-500 ease-in-out ${searchBarDynamicStyles} ${className}`}
       data-target="navbar-searchbar"
     >
       <Image
@@ -58,7 +58,7 @@ export default function SearchBar(props: SearchBarProps) {
       ></Image>
       <input
         id="navbar-search-input"
-        className={`bg-transparent w-full h-[${height}]  text-md  outline-none grow ml-2 mr-6 ${inputDynamicStyles}`}
+        className={`bg-transparent w-full h-[${height}] text-md outline-none grow ml-0 mr-6 ${inputDynamicStyles}`}
         autoFocus
         placeholder={i18n("searchBarPlaceholder")}
         onKeyDown={onSearch}
