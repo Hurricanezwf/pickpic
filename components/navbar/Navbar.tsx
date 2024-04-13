@@ -37,21 +37,21 @@ export default function Navbar({ locale }: NavbarProps) {
   if (navbarOpacity === "on") {
     opastyle = "bg-black/0";
   }
-  const navbarHeight = styles["navbar-height"];
+  const s = settingsFrom();
 
   return (
     <div
-      className={`w-screen fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${navbarHeight} ${opastyle} ${navbarDisplayTransition}`}
+      className={`w-screen fixed m-0 p-0 z-50 flex-none flex items-center transition-opacity duration-[1500ms] ease-in delay-[1000ms] ${s.navbarHeight} ${opastyle} ${navbarDisplayTransition}`}
     >
-      <div className="flex-none ml-4">
+      <div className="flex-none mx-4">
         <Logo navbarOpacity={navbarOpacity} />
       </div>
 
-      <div className="flex-none">
+      <div className={`flex-none ${s.tabsMargin}`}>
         <Tabs navbarOpacity={navbarOpacity} />
       </div>
 
-      <div className="grow shrink ml-6">
+      <div className={`grow shrink ${s.searchBarMargin}`}>
         <SearchBar navbarOpacity={navbarOpacity} />
       </div>
 
@@ -59,9 +59,26 @@ export default function Navbar({ locale }: NavbarProps) {
         <LocaleSwitch navbarOpacity={navbarOpacity} locale={locale} />
       </div>
 
-      <div className="flex-none mr-8">
+      <div className={`flex-none ${s.loginButtonMargin}`}>
         <LoginButton />
       </div>
     </div>
   );
+}
+
+interface Settings {
+  navbarHeight: string;
+  tabsMargin: string;
+  searchBarMargin: string;
+  loginButtonMargin: string;
+}
+
+function settingsFrom(): Settings {
+  let s: Settings = {
+    navbarHeight: "h-[56px]",
+    tabsMargin: "2xl:ml-6 xl:ml-4 lg:ml-4 md:ml-0 md:mr-3 sm:ml-0 sm:mr-3",
+    searchBarMargin: "2xl:ml-6 xl:ml-4 lg:ml-3 md:ml-2 sm:ml-0",
+    loginButtonMargin: "2xl:mr-8 xl:mr-8 lg:mr-6 md:mr-4 sm:mr-6",
+  };
+  return s;
 }

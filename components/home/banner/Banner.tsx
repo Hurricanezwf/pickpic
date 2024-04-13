@@ -15,6 +15,7 @@ export default function Banner() {
   }, []);
 
   const i18n = useTranslations("HomeBanner");
+  const s = settingsFrom();
 
   return (
     <div
@@ -33,15 +34,36 @@ export default function Banner() {
         }}
       ></Image>
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="flex flex-col gap-6 items-center">
-          <p className="text-6xl text-white/80 font-light tracking-normal">
+        <div className={`flex flex-col items-center ${s.sloganLineGap}`}>
+          <p
+            className={`text-white/80 font-light tracking-normal ${s.sloganTextSize}`}
+          >
             {i18n("slogan")}
           </p>
-          <p className="text-white/80 font-light tracking-light">
+          <p
+            className={`${s.sloganDescTextSize} text-white/80 font-light tracking-light`}
+          >
             {i18n("sloganDesc")}
           </p>
         </div>
       </div>
     </div>
   );
+}
+
+interface Settings {
+  sloganTextSize: string;
+  sloganDescTextSize: string;
+  sloganLineGap: string;
+}
+
+function settingsFrom(): Settings {
+  let s: Settings = {
+    sloganTextSize:
+      "2xl:text-6xl xl:text-5xl lg:text-4xl md:text-2xl sm:text-lg",
+    sloganDescTextSize:
+      "2xl:text-base xl:text-base lg:text-sm md:text-xs sm:text-[10px]",
+    sloganLineGap: "2xl:gap-6 xl:gap-6 lg:gap-5 md:gap-3 sm:gap-2",
+  };
+  return s;
 }

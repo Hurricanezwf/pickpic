@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import styles from "./navbar.module.css";
 
 interface TabsProps {
   // navbarOpacity 导航栏透明状态, "on" or "off"
@@ -18,8 +17,8 @@ export default function Tabs(props: TabsProps) {
     className = "";
   }
 
+  const s = settingsFrom();
   const navbarOpacity = props.navbarOpacity;
-  const height = styles["navbar-tabs-height"];
   const i18n = useTranslations("HomeNavbar");
 
   const tabs = [
@@ -67,7 +66,7 @@ export default function Tabs(props: TabsProps) {
 
   return (
     <div
-      className={`flex w-[192px] ${height} items-center justify-between ${className}`}
+      className={`flex items-center justify-between ${s.height} ${s.width} ${className}`}
       data-target="navbar-tabs"
     >
       {tabs.map((item) => (
@@ -77,4 +76,18 @@ export default function Tabs(props: TabsProps) {
       ))}
     </div>
   );
+}
+
+interface Settings {
+  height: string;
+  width: string;
+}
+
+function settingsFrom(): Settings {
+  let s: Settings = {
+    height: "h-[56px]",
+    width: "2xl:w-[192px] xl:w-[176px] lg:w-[176px] md:w-[160px] sm:w-[160px]",
+  };
+
+  return s;
 }

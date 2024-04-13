@@ -1,85 +1,18 @@
-.navbar-height {
-  height: 56px;
-}
-
-.navbar-logo-height {
-  height: 42px;
-}
-
-.navbar-tabs-height {
-  height: 42px;
-}
-
 .hover-underline:hover::after {
   width: 100%; /* 下划线宽度增加到100% */
 }
 
 @media (max-width: 1536px) {
-  .navbar-height {
-    height: 56px;
-  }
-
-  .navbar-logo-height {
-    height: 42px;
-  }
-
-  .navbar-tabs-height {
-    height: 42px;
-  }
 }
 
 @media (max-width: 1280px) {
-  .navbar-height {
-    height: 48px;
-  }
-
-  .navbar-logo-height {
-    height: 40px;
-  }
-
-  .navbar-tabs-height {
-    height: 40px;
-  }
 }
 
 @media (max-width: 1024px) {
-  .navbar-height {
-    height: 48px;
-  }
-
-  .navbar-logo-height {
-    height: 40px;
-  }
-
-  .navbar-tabs-height {
-    height: 40px;
-  }
 }
 
 @media (max-width: 768px) {
-  .navbar-height {
-    height: 40px;
-  }
-
-  .navbar-logo-height {
-    height: 32px;
-  }
-
-  .navbar-tabs-height {
-    height: 32px;
-  }
 }
 
 @media (max-width: 640px) {
-  .navbar-height {
-    height: 40px;
-  }
-
-  .navbar-logo-height {
-    height: 32px;
-  }
-
-  .navbar-tabs-height {
-    height: 32px;
-  }
 }

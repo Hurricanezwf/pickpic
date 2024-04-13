@@ -3,7 +3,7 @@
         "exploreLink": "explore",
         "createLink": "create",
         "likeLink": "like",
-        "searchBarPlaceholder": "Press Enter to search images",
+        "searchBarPlaceholder": "image search",
         "loginButton": "Log In"
     },
     "HomeBanner": {
