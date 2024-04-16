@@ -6,12 +6,12 @@ export default createMiddleware({
 
   // Used when no locale matches
   defaultLocale: "zh-CN",
-  localePrefix: "as-needed",
+  localePrefix: "never", // Note: 只能为 never, 不然会影响语言切换;
   localeDetection: true,
 });
 
 export const config = {
   // Match only internationalized pathnames
   //matcher: ["/", "/(zh-CN|en-US)/:path*"],
-  matcher: ["/", "/((?!_next).*)"],
+  matcher: ["/", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };
